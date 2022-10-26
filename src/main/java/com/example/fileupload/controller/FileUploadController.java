@@ -18,6 +18,7 @@ import java.nio.file.Paths;
 public class FileUploadController {
 
     //Save the uploaded file to this folder
+    //Change this file destination to suit your preferences
     private static String UPLOADED_FOLDER = "D:\\mine.001\\MAVEN-PROJECTS\\fileUpload\\filesuploaded\\";
 
     @GetMapping("/index")
@@ -46,7 +47,7 @@ public class FileUploadController {
         return ResponseEntity.ok("File Uploaded successfully");
     }
 
-    @PostMapping("/upload")
+    @PostMapping("/upload")//Recommended way
     public String singleFileUpload(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
         if (file.isEmpty()) {
             redirectAttributes.addFlashAttribute("message", "Please select a file to upload");
